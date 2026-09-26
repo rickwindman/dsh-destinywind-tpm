@@ -1,0 +1,39 @@
+{
+  "name": "dsh-destinywind-tpm",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "description": "跨平台硬件/用户级凭据存储：引用值与记录在落盘前用本机最强的密钥保护者（Windows TPM CNG 优先，回退 DPAPI；Linux tpm2-tools 优先，回退会话密钥环）封存，只在 resolve 时解封；无保护者可用则拒绝挂载，绝不落明文。",
+  "main": "index.js",
+  "icon": "./icon.svg",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "dpapi.js",
+    "tpm.js",
+    "linux.js",
+    "protector.js",
+    "envelope.js",
+    "cordis.patch.yml",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-credentials": "^0.1.5-rc.1",
+    "@deepseek-ai/dsh-credentials-local": "^0.1.5-rc.1",
+    "@deepseek-ai/dsh-home-paths": "^0.1.5-rc.1",
+    "@deepseek-ai/dsh-launch-environment": "^0.1.5-rc.1",
+    "@deepseek-ai/schemastery": "^3.18.1"
+  }
+}

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="TPM 凭据封存">
+  <defs>
+    <linearGradient id="tpTile" x1="6" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F0EFFE"/>
+      <stop offset="1" stop-color="#E3E9FD"/>
+    </linearGradient>
+    <linearGradient id="tpShield" x1="18" y1="14" x2="46" y2="52" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5B7BF0"/>
+      <stop offset="1" stop-color="#8B6CF6"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="4" y="4" width="56" height="56" rx="15" fill="url(#tpTile)"/>
+
+  <!-- Shield: the sealed store -->
+  <path d="M32 13.5l14.5 5.2v11.6c0 9.3-6 16.6-14.5 20.2-8.5-3.6-14.5-10.9-14.5-20.2V18.7L32 13.5z"
+        fill="#fff" fill-opacity="0.92" stroke="url(#tpShield)" stroke-width="3.2" stroke-linejoin="round"/>
+
+  <!-- Keyhole: a credential only this machine can turn -->
+  <circle cx="32" cy="30.5" r="4.6" fill="url(#tpShield)"/>
+  <path d="M32 35.1v6.8" stroke="url(#tpShield)" stroke-width="3.4" stroke-linecap="round"/>
+</svg>

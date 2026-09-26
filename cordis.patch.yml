@@ -1,0 +1,17 @@
+# 用平台密钥保护存储替换默认的明文凭据提供方。
+#
+# 保护者按强度自动选择，并写入 store 的 keyWrap 字段：
+#   Windows：TPM（CNG Microsoft Platform Crypto Provider）优先，回退 DPAPI
+#   Linux  ：TPM 2.0（tpm2-tools）优先，回退会话密钥环（libsecret）
+# 两者皆不可用则拒绝挂载，绝不落明文。
+#
+# 基座 bundle 先插入 `credentials` 行（@deepseek-ai/dsh-credentials-local），
+# 本补丁按 id 覆盖该行：同 id 的非 insert 补丁整行替换目标行的 config，
+# 因此这里必须把 `disabled` 写在被替换的行上，而不是依赖后来的插入顺序。
+# 一个上下文只能提供一个 `credentials` 服务，两行同时生效即注册冲突。
+- id: credentials
+  disabled: true
+- insert:
+    - id: destinywind-tpm
+      name: dsh-destinywind-tpm
+      config: {}
